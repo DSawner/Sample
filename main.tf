@@ -1,7 +1,15 @@
-
+provider "ibm" {
+  generation = 2
+  region = "us-south"
+}
 
 locals {
+  BASENAME = "schematics" 
   ZONE     = "us-south-1"
+}
+
+resource ibm_is_vpc "vpc" {
+  name = "${local.BASENAME}-vpc"
 }
 
 resource "ibm_is_vpc" "vpc" {
