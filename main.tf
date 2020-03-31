@@ -8,12 +8,8 @@ locals {
   ZONE     = "us-south-1"
 }
 
-resource ibm_is_vpc "vpc" {
-  name = "${local.BASENAME}-vpc"
-}
-
 resource "ibm_is_vpc" "vpc" {
-  name = "${var.name}-vpc"
+  name = "${local.BASENAME}-vpc"
 }
 
 resource "ibm_is_security_group" "sg1" {
@@ -34,7 +30,7 @@ resource "ibm_is_security_group_rule" "ingress_ssh_all" {
 }
 
 resource "ibm_is_subnet" "subnet1" {
-  name                     = "${var.name}-subnet"
+  name                     = "${local.BASENAME}-subnet"
   vpc                      = "${ibm_is_vpc.vpc.id}"
   zone                     = "${local.ZONE}"
   total_ipv4_address_count = 256
