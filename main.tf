@@ -6,7 +6,7 @@ provider "ibm" {
   region = "us-south"
 }
 
-local {
+locals {
   BASENAME = "schematics" 
   ZONE     = "us-south-1"
 }
