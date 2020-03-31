@@ -17,7 +17,7 @@ resource ibm_is_vpc "vpc" {
 
 resource ibm_is_security_group "sg1" {
   name = "${local.BASENAME}-sg1"
-  vpc  = ibm_is_vpc.vpc.id
+  vpc  =  ${ibm_is_vpc.vpc.id}"
 }
 
 # allow all incoming network traffic on port 22
@@ -54,7 +54,7 @@ data ibm_resource_group "group" {
 resource ibm_is_instance "vsi1" {
   name    = "${local.BASENAME}-vsi1"
   resource_group = "${data.ibm_resource_group.group.id}"
-  vpc     = ibm_is_vpc.vpc.id
+  vpc     =  ${ibm_is_vpc.vpc.id}"
   zone    = "${local.ZONE}"
   keys    = [data.ibm_is_ssh_key.ssh_key_id.id]
   image   = data.ibm_is_image.ubuntu.id
@@ -76,5 +76,5 @@ output sshcommand {
 }
 
 output vpc_id {
- value = ibm_is_vpc.vpc.id
+ value =  ${ibm_is_vpc.vpc.id}"
 }
